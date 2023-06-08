@@ -1,0 +1,56 @@
+<h2>Add Movie | Template Driven Form</h2>
+<form #movieForm="ngForm" (ngSubmit)="submitMovieForm(movieForm.value)">
+  <div class="mb-3">
+    <label for="name" class="form-label">Name</label>
+    <input
+      type="text"
+      class="form-control"
+      id="name"
+      aria-describedby="nameHelp"
+      name="movieName"
+      #movieName="ngModel"
+      ngModel
+      required
+      minlength="3"
+      pattern=""
+    />
+    <div
+      id="nameHelp"
+      class="form-text text-danger"
+      *ngIf="movieName.touched && movieName.invalid"
+    >
+      <small *ngIf="movieName.errors?.['required']"
+        >This field is required</small
+      >
+      <small *ngIf="movieName.errors?.['minlength']">Min. length is 3</small>
+    </div>
+  </div>
+  <div class="mb-3">
+    <label for="overview" class="form-label">Overview</label>
+    <textarea
+      type="text"
+      class="form-control"
+      id="overview"
+      aria-describedby="overviewHelp"
+      rows="5"
+      name="overview"
+      #overview="ngModel"
+      ngModel
+      required
+      minlength="10"
+      maxlength="200"
+    ></textarea>
+    <div
+      id="overviewHelp"
+      class="form-text text-danger"
+      *ngIf="overview.touched && overview.invalid"
+    >
+      <small *ngIf="overview.errors?.['required']"
+        >This field is required</small
+      >
+      <small *ngIf="overview.errors?.['minlength']">Min. length is 10</small>
+      <small *ngIf="overview.errors?.['maxlength']">Max. length is 200</small>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary" [disabled]="movieForm.invalid">Submit</button>
+</form>

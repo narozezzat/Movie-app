@@ -1,0 +1,14 @@
+<div class="card h-100">
+  <img [src]="movieDetails.poster_path" class="card-img-top" alt="..." />
+  <div class="card-body">
+    <h5 class="card-title">{{movieDetails.title}}</h5>
+    <p class="card-text">
+     {{movieDetails.overview}}
+    </p>
+    <button class="btn btn-primary" (click)="redirectToDetails()">View details</button>
+    <!-- <a routerLink="/movie-details">View details</a> -->
+  </div>
+  <div class="card-footer">
+    <small class="text-body-secondary">{{movieDetails.release_date | date }}</small>
+  </div>
+</div>
